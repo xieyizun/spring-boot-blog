@@ -1,0 +1,11 @@
+.register {
+  width: 480px;
+  /* text-align: center; */
+  margin: auto;
+
+  .ant-input-group {
+    .ant-input-affix-wrapper {
+      margin-bottom: 16px;
+    }
+  }
+}

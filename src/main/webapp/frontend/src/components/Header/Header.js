@@ -1,35 +1,35 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { IndexLink, Link } from 'react-router'
 import './Header.scss'
+import { Layout } from 'antd'
+const { Header } = Layout
 
-export const Header = () => (
-  <div>
-    <h1>React Starter Kit</h1>
-    <h2><a href='https://bodyno.com' target='_blank'>bodyno</a></h2>
-    <IndexLink to='/' activeClassName='route--active'>
-      Home
-    </IndexLink>
-    {' · '}
-    <Link to='/counter' activeClassName='route--active'>
-      Counter
-    </Link>
-    {' · '}
-    <Link to='/zen' activeClassName='route--active'>
-      Zen
-    </Link>
-    {' · '}
-    <Link to='/elapse' activeClassName='route--active'>
-      Elapse
-    </Link>
-    {' · '}
-    <Link to='/route/88' activeClassName='route--active'>
-      Route
-    </Link>
-    {' · '}
-    <Link to='/notFound' activeClassName='route--active'>
-      404
-    </Link>
-  </div>
-)
+export class MyHeader extends Component {
+  constructor(props) {
+    super(props)
+  }
 
-export default Header
+  render () {
+    return (
+      <Header style={{background: '#fff', padding: 0}}>
+        <div className={"pull-left"}>
+          <IndexLink to='/' activeClassName='route--active'>
+            主页
+          </IndexLink>
+          <Link to='/notFound' activeClassName='route--active'>
+            关于
+          </Link>
+        </div>
+        <div className={"pull-right"}>
+          <Link to='/register' activeClassName='route--active'>
+            注册
+          </Link>
+          <Link to='/notFound' activeClassName='route--active'>
+            登录
+          </Link>
+        </div>
+      </Header>
+  )}
+}
+
+export default MyHeader

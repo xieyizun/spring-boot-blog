@@ -1,4 +1,24 @@
-.route--active {
-  font-weight: bold;
-  text-decoration: underline;
+.ant-layout-header {
+  padding: 16px 24px;
+  height: 48px;
+
+  .pull-left {
+    float: left;
+  }
+
+  .pull-right {
+    float: right;
+  }
+  .route--active {
+    font-weight: bold;
+    text-decoration: none;
+    color: #54800a;
+  }
+  a {
+    text-decoration: none;
+    padding: 0 8px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }

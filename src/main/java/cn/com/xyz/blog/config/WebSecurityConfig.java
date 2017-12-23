@@ -53,14 +53,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .httpBasic()
             .and()
             .authorizeRequests()
+            // the last one needs a URL, else throws exception
+            // Caused by: java.lang.IllegalStateException: An incomplete mapping was found for []. Try completing it with something like requestUrls().<something>.hasRole('USER')
             .antMatchers("/index.html", "/home.html", "/login.html", "/").permitAll()
             .anyRequest().authenticated();
-//        http.httpBasic().disable().authorizeRequests()
-//                .antMatchers("/", "/users/registration").permitAll()
-//                .antMatchers().authenticated()
-//                // the last one needs a URL, else throws exception
-//                // Caused by: java.lang.IllegalStateException: An incomplete mapping was found for []. Try completing it with something like requestUrls().<something>.hasRole('USER')
-//                .antMatchers(PATCH, WILDCARD_PATTERN).permitAll();
     }
 
     @Autowired

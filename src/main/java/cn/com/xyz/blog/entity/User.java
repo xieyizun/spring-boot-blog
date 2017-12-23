@@ -6,10 +6,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @projectName: SpringBootBlog
@@ -25,6 +29,8 @@ public class User extends BaseEntity {
     private String email;
     private String password;
     private Boolean isActived;
+    private Set<Role> roles;
+
 
     private UserProfile userProfile;
     private List<Category> categories;
@@ -69,6 +75,18 @@ public class User extends BaseEntity {
 
     public void setActived(Boolean actived) {
         isActived = actived;
+    }
+
+    @ManyToMany
+    @JoinTable(name="users_roles",
+               joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
